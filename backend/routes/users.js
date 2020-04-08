@@ -9,6 +9,17 @@ const router = express.Router();
 // can use 'short' or 'combined'
 router.use(morgan('short'));
 
+const validateUser = (user) => {
+    const schema = {
+        username: Joi.string().min(3).max(30).required(),
+        full_name: Joi.string().required(),
+        email_address: Joi.string().email().required(),
+        user_type: Joi.string().required(),
+        created: Joi.date(),
+    };
+    return Joi.validate(user, schema);
+};
+
 // retrieve all users from database
 // EX: http://localhost:3000/users/
 router.get('/', async (req, res) => {
@@ -16,7 +27,7 @@ router.get('/', async (req, res) => {
         const users = await User.find();
         res.json(users);
     } catch (err) {
-        res.json({ message: err })
+        res.json({ message: err });
     }
 });
 
@@ -27,7 +38,7 @@ router.get('/:id', async (req, res) => {
         const user = await User.findById(req.params.id);
         res.json(user);
     } catch (err) {
-        res.json({ message: err })
+        res.json({ message: err });
     }
 });
 
@@ -35,7 +46,7 @@ router.get('/:id', async (req, res) => {
 // EX: http://localhost:3000/users/
 // JSON BODY:
 // {
-// 	   "username": "...",
+//     "username": "...",
 //     "full_name": "...",
 //     "email_address": "...@email.com",
 //     "user_type": "..."
@@ -51,23 +62,12 @@ router.post('/', async (req, res) => {
         full_name: req.body.full_name,
         email_address: req.body.email_address,
         user_type: req.body.user_type,
-    }); 
+    });
 
-    tempUser.save()
-        .then(data => {
+    return tempUser.save()
+        .then((data) => {
             res.json(data);
         });
 });
-
-const validateUser = (user) => {
-    const schema = {
-        username: Joi.string().min(3).max(30).required(),
-        full_name: Joi.string().required(),
-        email_address: Joi.string().email().required(),
-        user_type: Joi.string().required(),
-        created: Joi.date(),
-    };
-    return Joi.validate(user, schema);
-};
 
 module.exports = router;
