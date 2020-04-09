@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 function AboutTeam() {
     return (
-        <div class="card">
-            <div class="card-body">
+        <div className="card">
+            <div className="card-body">
                 <h3>About Us</h3>
                 <p>Our names, contact</p>
             </div>
