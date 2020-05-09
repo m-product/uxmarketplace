@@ -4,10 +4,12 @@ const mongoose = require('mongoose');
 require('dotenv/config');
 
 const userRoute = require('./routes/users');
+const questionRoute = require('./routes/questions');
 
 app.use(express.json());
 
-app.use('/users', userRoute);
+app.use('/users/', userRoute);
+app.use('/questions/', questionRoute);
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
