@@ -9,8 +9,7 @@ const router = express.Router();
 // can use 'short' or 'combined'
 router.use(morgan('short'));
 
-// retrieve all users from database
-// EX: http://localhost:3000/users/
+// retrieve all questions from database
 router.get('/', async (req, res) => {
     try {
         const questions = await Question.find();
@@ -20,8 +19,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// retrieve one user from database based off id
-// EX: http://localhost:3000/users/:id
+// retrieve one question from database based off id
 router.get('/:id', async (req, res) => {
     try {
         const question = await Question.findById(req.params.id);
@@ -31,15 +29,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// add user to database
-// EX: http://localhost:3000/users/
-// JSON BODY:
-// {
-// 	   "username": "...",
-//     "full_name": "...",
-//     "email_address": "...@email.com",
-//     "user_type": "..."
-// }
+// add question to database
 router.post('/', async (req, res) => {
     const { error } = validateQuestion(req.body);
     if (error) {
