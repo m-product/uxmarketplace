@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
+const Schema = mongoose.Schema;
 
 const emailListSchema = new Schema({
-
     first_name: {
         type: String,
         required: true,

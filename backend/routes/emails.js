@@ -58,7 +58,7 @@ const validateEmailEntry = (emailEntry) => {
         first_name: Joi.string().required(),
         last_name: Joi.string().required(),
         email_address: Joi.string().email().required(),
-        responded: Joi.boolean.valid(false),
+        responded: Joi.boolean().valid(false),
         created: Joi.date(),
     };
     return Joi.validate(emailEntry, schema);
