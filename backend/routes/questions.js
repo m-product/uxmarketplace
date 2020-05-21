@@ -35,9 +35,9 @@ router.post('/', async (req, res) => {
     if (error) {
         return res.status(400).send(error.details[0].message);
     }
-
     const tempQuestion = new Question({
         QuestionBody: req.body.QuestionBody,
+        ShortDescription: req.body.ShortDescription,
         Category: req.body.Category,
         Difficulty: req.body.Difficulty,
     }); 
@@ -49,8 +49,10 @@ router.post('/', async (req, res) => {
 });
 
 const validateQuestion = (question) => {
+    
     const schema = {
         QuestionBody: Joi.string().required(),
+        ShortDescription: Joi.string().required(),
         Category: Joi.string().required(),
         Difficulty: Joi.string().required(),
         created: Joi.date(),
