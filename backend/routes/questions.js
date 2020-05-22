@@ -9,7 +9,7 @@ const router = express.Router();
 // can use 'short' or 'combined'
 router.use(morgan('short'));
 
-// retrieve all questions from database
+/* retrieve all questions from database
 router.get('/', async (req, res) => {
     try {
         const questions = await Question.find();
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.json({ message: err })
     }
-});
+});*/
 
 // retrieve one question from database based off id
 router.get('/:id', async (req, res) => {
@@ -27,6 +27,35 @@ router.get('/:id', async (req, res) => {
     } catch (err) {
         res.json({ message: err })
     }
+});
+
+// Paged results. Input page and limit into the query. 
+router.get('/', async (req, res)=> {
+    try {
+        const limit = parseInt(req.query.limit); // results per page
+        const page = parseInt(req.query.page)
+        const startIndex = (page -  1) * limit
+        const endIndex = page * limit
+
+        const results = {}
+        if(endIndex <  await Question.countDocuments().exec()){
+            results.next = {
+                page: page +1,
+                limit:limit
+            }
+        }
+        if (startIndex > 0) {
+            results.previous = {
+              page: page - 1,
+              limit: limit
+            }
+        }
+        results.results = await Question.find().limit(limit).skip(startIndex).exec()
+        res.json(results)
+    } catch (err) {
+        res.json({ message: err })
+    }
+
 });
 
 // add question to database
