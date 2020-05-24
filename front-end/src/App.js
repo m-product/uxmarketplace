@@ -1,19 +1,26 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Navbar from './components/layout/Navbar'
-import Homepage from './components/homepage/Homepage'
+import './App.css'
+
+import Nav from './components/Nav';
+import ChallengeList from './components/ChallengeList';
+import AddChallege from './components/AddChallege';
+import { ChallegeProvider } from './components/ChallegeContext';
+import HomeTitle from './components/HomeTitle'
+
+
+
 
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Navbar />
-        <Switch>
-          <Route path='/' component={Homepage}></Route>
-        </Switch>
+    <ChallegeProvider>
+      <div className='App'>
+          <Nav />
+          <HomeTitle />
+          <ChallengeList />
       </div>
-    </ BrowserRouter>
+    </ChallegeProvider>
+    
   );
 }
 
