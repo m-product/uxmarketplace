@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Collapse from 'react-bootstrap/Collapse'
+import { Link } from 'react-router-dom';
 
 const Challenge = ({title, brief, description}) => {
     const [open, setOpen] = useState(false);
@@ -32,7 +33,9 @@ const Challenge = ({title, brief, description}) => {
                         <button className='btn btn-primary purple'>Upload Design Response</button>
                     </div>
                     <div className='col-auto p-4'>
+                        <Link to='/project-response-list'>
                         <button className='btn btn-outline-primary purple'>See Other Responses</button>
+                        </Link>
                     </div>
                 </div>
             </div>

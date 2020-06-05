@@ -1,4 +1,5 @@
 import React from 'react';
+import ChallengeList from './ChallengeList';
 
 const HomeTitle = () => {
     return (
@@ -9,6 +10,7 @@ const HomeTitle = () => {
             <div className='row justify-content-center p-2 '>
                 <h6 className='text-muted'>Try to complete a challenge by uploading a design response before viewing other responses!</h6>
             </div>
+            <ChallengeList />
         </div>
     );
 }
