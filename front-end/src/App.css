@@ -54,3 +54,7 @@ a{
   font-family: myRobot;
   src: url(./assets/Roboto-Bold.ttf)
 }
+
+.App{
+  background-color: rgb(221, 221, 221);
+}
