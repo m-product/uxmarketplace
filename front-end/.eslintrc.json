@@ -1,0 +1,13 @@
+{
+    "extends": "airbnb",
+    "env": {
+        "browser": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 8
+    },
+    "rules": {
+        "indent": ["error", 4],
+        "no-console": ["error", { "allow": ["error"] }]
+    }
+}
