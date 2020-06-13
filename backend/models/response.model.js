@@ -27,18 +27,17 @@ const responseSchema = new Schema({
         ref: "User",
         required: true,
     },
-    PostId:{
+    QuestionId:{
         type: Schema.Types.ObjectId,
-        ref: "Post",
+        ref: "Question",
         required: true,
     },
-    ResponseId:{
+    // Array of Feedback IDs. required set to false as response might not have a feedback. 
+    FeedbackId: [{
         type: Schema.Types.ObjectId,
-        ref: "Response",
-        required: true,
-    }
-
+        ref: "Feedback"
+    }]
 });
-const  Feedback = mongoose.model('Feedback', postSchema);
+const  Response = mongoose.model('Response', responseSchema);
 
 module.exports = Feedback;

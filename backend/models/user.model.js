@@ -23,6 +23,16 @@ const userSchema = new Schema({
       type: String,  // Web-owner or ux-designer
       required: true
   },
+  // Array of Feedback IDs. required set to false as user might not have a feedback. 
+  FeedbackId: [{
+    type: Schema.Types.ObjectId,
+    ref: "Feedback"
+}],
+// Array of Response IDs. required set to false as response might not have a response. 
+ResponseId: [{
+  type: Schema.Types.ObjectId,
+  ref: "Response"
+}]
 });
 
 const User = mongoose.model('User', userSchema);

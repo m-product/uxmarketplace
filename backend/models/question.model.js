@@ -19,7 +19,12 @@ const questionSchema = new Schema({
     Difficulty: {
         type: String,
         required: true,
-    }
+    },
+    // Array of Feedback IDs. required set to false as question might not have a response. 
+    ResponseId: [{
+        type: Schema.Types.ObjectId,
+        ref: "ResponseId"
+    }]
 });
 
 const Question = mongoose.model('Questions', questionSchema);
