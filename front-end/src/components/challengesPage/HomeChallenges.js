@@ -1,7 +1,8 @@
 import React from "react";
 import ChallengeList from "./ChallengeList";
+import TempForm from "../TempForm";
 
-const HomeTitle = () => {
+const HomeChallenges = () => {
   return (
     <div className="container p-5">
       <div className="row justify-content-center">
@@ -12,10 +13,11 @@ const HomeTitle = () => {
           Try to complete a challenge by uploading a design response before
           viewing other responses!
         </h6>
+        <TempForm />
       </div>
       <ChallengeList />
     </div>
   );
 };
 
-export default HomeTitle;
+export default HomeChallenges;

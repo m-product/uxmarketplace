@@ -5,7 +5,7 @@ import Nav from "./components/Nav";
 import AddChallege from "./components/challengesPage/AddChallege";
 import { ChallegeProvider } from "./components/challengesPage/ChallegeContext";
 import { ProjectResponseProvider } from "./components/projectResponses/ProjectResponseContext";
-import HomeTitle from "./components/challengesPage/HomeTitle";
+import HomeChallenges from "./components/challengesPage/HomeChallenges";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProjectResponseList from "./components/projectResponses/ProjectResponseList";
 import CommentList from "./components/CommentsPage/CommentList";
@@ -20,7 +20,7 @@ function App() {
             <div className="App">
               <Nav />
               <Switch>
-                <Route path="/" exact component={HomeTitle} />
+                <Route path="/" exact component={HomeChallenges} />
                 <Route
                   path="/project-response-list"
                   component={ProjectResponseList}
