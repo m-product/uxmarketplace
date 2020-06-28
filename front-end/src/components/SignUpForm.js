@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Button, Checkbox, Form } from "semantic-ui-react";
 
 const SignUpForm = () => (
@@ -19,6 +20,7 @@ const SignUpForm = () => (
       <Checkbox label="Send me cool stuff" />
     </Form.Field>
     <Button type="submit">Let's do this!</Button>
+    {/* axios send form field 1,2,3, and checkbox state  */}
   </Form>
 );
 

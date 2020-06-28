@@ -1,6 +1,5 @@
 import React from "react";
 import ChallengeList from "./ChallengeList";
-import TempForm from "../TempForm";
 
 const HomeChallenges = () => {
   return (
@@ -13,7 +12,6 @@ const HomeChallenges = () => {
           Try to complete a challenge by uploading a design response before
           viewing other responses!
         </h6>
-        <TempForm />
       </div>
       <ChallengeList />
     </div>
