@@ -10,6 +10,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProjectResponseList from "./components/projectResponses/ProjectResponseList";
 import CommentList from "./components/CommentsPage/CommentList";
 import { CommentProvider } from "./components/CommentsPage/CommentContext";
+import LoginForm from "./components/LoginForm.js";
+import SignUpForm from "./components/SignUpForm.js";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
               <Nav />
               <Switch>
                 <Route path="/" exact component={HomeChallenges} />
+                <Route path="/login" component={LoginForm} />
+                <Route path="/signup" component={SignUpForm} />
                 <Route
                   path="/project-response-list"
                   component={ProjectResponseList}
