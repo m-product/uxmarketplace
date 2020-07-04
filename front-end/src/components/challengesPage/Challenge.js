@@ -20,7 +20,7 @@ const Challenge = ({ title, brief, description }) => {
           <div className="col">
             <img
               className="float-right"
-              src={require("/Users/maxwalts/Desktop/mproduct/uxmarketplace/front-end/src/assets/tempimage.png")}
+              //src={require("/Users/maxwalts/Desktop/mproduct/uxmarketplace/front-end/src/assets/tempimage.png")}
               alt="logo"
               width="200"
               height="125"

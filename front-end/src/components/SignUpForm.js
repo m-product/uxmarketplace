@@ -19,8 +19,7 @@ const SignUpForm = () => (
     <Form.Field>
       <Checkbox label="Send me cool stuff" />
     </Form.Field>
-    <Button type="submit">Let's do this!</Button>
-    {/* axios send form field 1,2,3, and checkbox state  */}
+    <Button type="submit">Let's do this!</Button> 
   </Form>
 );
 
