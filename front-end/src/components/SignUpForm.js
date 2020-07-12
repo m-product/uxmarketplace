@@ -3,33 +3,19 @@ import { Component } from "react";
 import axios from "axios";
 import { Form, Button } from "semantic-ui-react";
 
-<<<<<<< HEAD
-const SignUpForm = () => (
-  <Form>
-    <Form.Field>
-      <label>email</label>
-      <input placeholder="wolverine@email.com" />
-    </Form.Field>
-    <Form.Field>
-      <label>username</label>
-      <input placeholder="woodywolverine" />
-    </Form.Field>
-    <Form.Field>
-      <label>password</label>
-      <input placeholder="GoBlue1987" />
-    </Form.Field>
-    <Form.Field>
-      <Checkbox label="Send me cool stuff" />
-    </Form.Field>
-    <Button type="submit">Let's do this!</Button> 
-  </Form>
-);
-=======
 class SignUpForm extends Component {
   constructor(props) {
     super(props);
+
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangeFullname = this.onChangeFullname.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.handleButtonPress = this.handleButtonPress.bind(this);
+    
     this.state = {
       username: "",
+      fullname: "",
       email: "",
       password: "",
       onEmailList: false,
@@ -41,23 +27,43 @@ class SignUpForm extends Component {
       username: e.target.value,
     });
   }
+  onChangeFullname(e) {
+    this.setState({
+      fullname: e.target.value,
+    });
+  }
   onChangeEmail(e) {
     this.setState({
-      username: e.target.value,
+      email: e.target.value,
     });
   }
   onChangePassword(e) {
     this.setState({
-      username: e.target.value,
+      password: e.target.value,
     });
   }
 
-  handleButtonPress(e) {
-    this.setState((state) => ({
-      username: state.username,
-      email: state.email,
-      password: state.password,
-    }));
+  handleButtonPress(e) { 
+    e.preventDefault();
+
+    const user = {
+      username: this.state.username,
+      fullname: this.state.fullname,
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    console.log(user);
+
+    axios.post('http://localhost:5000/users/add', user)
+      .then(res => console.log(res.data));
+
+    this.setState({
+      username: "",
+      fullname: "",
+      email: "",
+      password: "",
+    });
   }
   handleCheckPress(e) {
     this.setState((state) => ({
@@ -71,18 +77,34 @@ class SignUpForm extends Component {
         <Form.Field>
           <label>email</label>
           <input
-            // value={this.state.username}
             placeholder="wolverine@email.com"
             required={true}
+            onChange={this.onChangeEmail}
           />
         </Form.Field>
         <Form.Field>
           <label>username</label>
-          <input placeholder="woodywolverine" required={true} />
+          <input
+            placeholder="woodywolverine" 
+            required={true} 
+            onChange={this.onChangeUsername}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>fullname</label>
+          <input
+            placeholder="Woody Wolverine"
+            required={true}
+            onChange={this.onChangeFullname}
+          />
         </Form.Field>
         <Form.Field>
           <label>password</label>
-          <input placeholder="GoBlue1987" required={true} />
+          <input 
+            placeholder="GoBlue1987" 
+            required={true}
+            onChange={this.onChangePassword}
+            />
         </Form.Field>
         <Form.Field>
           <Form.Checkbox
@@ -98,6 +120,5 @@ class SignUpForm extends Component {
     );
   }
 }
->>>>>>> c23d0daeb680561c7c8f0b487e888e87dc1d2a68
 
 export default SignUpForm;
